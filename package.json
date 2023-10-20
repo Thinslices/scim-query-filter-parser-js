@@ -1,7 +1,7 @@
 {
-  "name": "scim-query-filter-parser",
+  "name": "ci-scim-query-filter-parser",
   "version": "2.0.4",
-  "description": "Parser for SCIM Filter Query Strings",
+  "description": "Case insensitive parser for SCIM Filter Query Strings",
   "main": "dist/index.js",
   "scripts": {
     "format": "prettier --list-different --write '**/*.{json,yml,md,ts}'",
@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/the-control-group/scim-query-filter-parser-js#readme",
   "devDependencies": {
+    "@types/node": "13.13.2",
     "@typescript-eslint/eslint-plugin": "^2.7.0",
     "@typescript-eslint/parser": "^2.7.0",
     "apg": "^3.1.1",
@@ -39,6 +40,7 @@
     "eslint-plugin-prettier": "^3.1.1",
     "nodemon": "^1.19.4",
     "prettier": "^1.19.1",
+    "tsc": "^2.0.4",
     "typescript": "^3.7.2"
   },
   "engines": {

@@ -89,7 +89,7 @@ test("compileFilter() - supports the `pr` operator", t => {
 });
 
 test("compileFilter() - supports the `eq` operator", t => {
-  const filter = compileFilter('id eq "75d350df-e2be-4f09-9c9a-f16f510e18b5"');
+  const filter = compileFilter('id eq "75d350df-e2be-4f09-9C9a-f16f510e18b5"');
   const results = db.filter(filter);
   t.deepEqual(
     results.map(({ id }) => id),

@@ -53,7 +53,7 @@ function co(path: string[], value: any, data: any): boolean {
         ? x.value
         : undefined;
 
-    return typeof v === "string" && v.includes(value);
+    return typeof v === "string" && (typeof value === "string" ? v.toLocaleLowerCase().includes(value.toLocaleLowerCase()) : v.includes(value));
   });
 }
 
@@ -69,7 +69,7 @@ function sw(path: string[], value: any, data: any): boolean {
         ? x.value
         : undefined;
 
-    return typeof v === "string" && v.substring(0, value.length) === value;
+    return typeof v === "string" && (typeof value === "string" ? v.substring(0, value.length).localeCompare(value, undefined, { sensitivity: "base" }) === 0 : v.substring(0, value.length) === value);
   });
 }
 
@@ -88,7 +88,7 @@ function ew(path: string[], value: any, data: any): boolean {
     return (
       typeof v === "string" &&
       v.length >= value.length &&
-      v.substring(v.length - value.length) === value
+      (typeof value === "string" ? v.substring(v.length - value.length).localeCompare(value, undefined, { sensitivity: "base" }) === 0 : v.substring(v.length - value.length) === value)
     );
   });
 }
@@ -105,7 +105,7 @@ function gt(path: string[], value: any, data: any): boolean {
         ? x.value
         : undefined;
 
-    return v > value;
+    return typeof v === "string" && typeof value === "string" ? v.localeCompare(value, undefined, { sensitivity: "base" }) > 0 : v > value;
   });
 }
 
@@ -121,7 +121,7 @@ function ge(path: string[], value: any, data: any): boolean {
         ? x.value
         : undefined;
 
-    return v >= value;
+    return typeof v === "string" && typeof value === "string" ? v.localeCompare(value, undefined, { sensitivity: "base" }) >= 0 : v >= value;
   });
 }
 
@@ -137,7 +137,7 @@ function lt(path: string[], value: any, data: any): boolean {
         ? x.value
         : undefined;
 
-    return v < value;
+    return typeof v === "string" && typeof value === "string" ? v.localeCompare(value, undefined, { sensitivity: "base" }) < 0 : v < value;
   });
 }
 
@@ -154,7 +154,7 @@ function le(path: string[], value: any, data: any): boolean {
           ? x.value
           : undefined;
 
-      return v <= value;
+      return typeof v === "string" && typeof value === "string" ? v.localeCompare(value, undefined, { sensitivity: "base" }) <= 0 : v <= value;
     }
   });
 }
